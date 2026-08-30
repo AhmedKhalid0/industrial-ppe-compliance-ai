@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial PPE Compliance AI | Operations Safety Hub</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Top Navigation -->
+        <header class="top-navbar">
+            <div class="brand">
+                <div class="brand-icon">🛡️</div>
+                <div>
+                    <h1>Industrial PPE Compliance AI</h1>
+                    <span>Edge Computer Vision & Real-Time Worker Safety Intelligence</span>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="live-indicator">
+                    <span class="pulse-dot"></span>
+                    <span>LIVE SURVEILLANCE</span>
+                </div>
+                <a href="/api/export/csv" class="btn-export">📥 Export HSE Audit (CSV)</a>
+            </div>
+        </header>
+
+        <!-- Main Dashboard View -->
+        <main class="main-content">
+            <!-- Telemetry Cards -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="color: #10b981;">✅</div>
+                    <div class="kpi-info">
+                        <h3>Compliance Rate</h3>
+                        <div class="kpi-value" id="valCompliance" style="color: #10b981;">100%</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="color: #3b82f6;">👷</div>
+                    <div class="kpi-info">
+                        <h3>Active Workers in View</h3>
+                        <div class="kpi-value" id="valActiveWorkers" style="color: #3b82f6;">2</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="color: #ef4444;">🚨</div>
+                    <div class="kpi-info">
+                        <h3>Violations Today</h3>
+                        <div class="kpi-value" id="valTotalViolations" style="color: #ef4444;">0</div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="color: #8b5cf6;">⚡</div>
+                    <div class="kpi-info">
+                        <h3>Inference Engine</h3>
+                        <div class="kpi-value" style="color: #8b5cf6; font-size: 20px;">YOLOv8 @ 30 FPS</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Stream & Visual Analytics Grid -->
+            <section class="grid-2col">
+                <!-- Live Video Feed -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>📹 Live Video Stream & Spatial PPE Overlays</h2>
+                        <span style="font-size: 12px; color: #94a3b8;">CAM-01 • Assembly Zone</span>
+                    </div>
+                    <div class="video-wrapper">
+                        <img src="/video_feed" class="video-stream" alt="Live Camera Video Stream" />
+                        <div class="video-overlay-badge">RTSP STREAM LIVE</div>
+                    </div>
+                </div>
+
+                <!-- Charts & HSE Metrics -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>📊 Incident Trends & PPE Breakdown</h2>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Hourly Violation Trend</span>
+                            <div class="chart-container" style="height: 140px; margin-top: 6px;">
+                                <canvas id="trendChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 700;">Missing PPE Distribution</span>
+                            <div class="chart-container" style="height: 140px; margin-top: 6px;">
+                                <canvas id="ppeBreakdownChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Safety Violations Table -->
+            <section class="panel">
+                <div class="panel-header">
+                    <h2>📋 Real-Time Safety Violation Log & Evidence Gallery</h2>
+                    <span style="font-size: 12px; color: #94a3b8;">Cryptographically Audited Incident Feed</span>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Incident ID</th>
+                                <th>Timestamp</th>
+                                <th>Zone</th>
+                                <th>Worker ID</th>
+                                <th>Violation</th>
+                                <th>Evidence Crop</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="incidentTableBody">
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: #94a3b8; padding: 20px;">Loading live safety incidents...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

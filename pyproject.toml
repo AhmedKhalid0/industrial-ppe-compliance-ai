@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "industrial-ppe-compliance-ai"
+version = "1.0.0"
+description = "Real-time industrial PPE compliance and safety monitoring system using YOLOv8/v11, OpenCV, FastAPI, and HSE analytics dashboard."
+readme = "README.md"
+authors = [{ name = "Ahmed Khaled (Ahmed Algendy)", email = "contact@ahmedalgendy.com" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Environment :: GPU :: NVIDIA CUDA",
+    "Intended Audience :: Manufacturing",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = [
+    "ultralytics>=8.1.0",
+    "pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "jinja2>=3.1.2",
+    "pydantic>=2.5.0",
+    "sqlalchemy>=2.0.0",
+    "rich>=13.7.0",
+    "click>=8.1.7",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "flake8>=6.1.0",
+    "black>=23.11.0",
+]
+
+[project.scripts]
+ppe-detector = "ppe_detector.cli.main:cli"
+ppe-server = "ppe_detector.api.app:start"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=ppe_detector --cov-report=term-missing"

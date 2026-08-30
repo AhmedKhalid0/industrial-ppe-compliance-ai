@@ -1,0 +1,30 @@
+# Core Vision & Deep Learning
+ultralytics>=8.1.0
+opencv-python-headless>=4.8.0; platform_system == "Linux"
+opencv-python>=4.8.0; platform_system != "Linux"
+pillow>=10.0.0
+numpy>=1.24.0
+
+# Web API, WebSocket & Dashboard
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+jinja2>=3.1.2
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+websockets>=12.0
+
+# Database & Storage
+sqlalchemy>=2.0.0
+aiosqlite>=0.19.0
+
+# CLI & Reporting
+rich>=13.7.0
+click>=8.1.7
+requests>=2.31.0
+tabulate>=0.9.0
+
+# Development & Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+flake8>=6.1.0
+black>=23.11.0
