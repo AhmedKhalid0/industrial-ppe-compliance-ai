@@ -77,7 +77,7 @@ def create_app() -> FastAPI:
 
     @app.get("/", response_class=HTMLResponse)
     async def dashboard_home(request: Request):
-        return templates.TemplateResponse("index.html", {"request": request, "version": __version__})
+        return templates.TemplateResponse(request=request, name="index.html", context={"version": __version__})
 
     @app.get("/video_feed")
     def video_feed():
