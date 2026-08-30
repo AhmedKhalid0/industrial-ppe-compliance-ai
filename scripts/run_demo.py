@@ -7,6 +7,11 @@ import sys
 import webbrowser
 import time
 
+# Fix Windows console UTF-8 output
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 # Ensure project root is in sys.path
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
 if BASE_DIR not in sys.path:
@@ -17,25 +22,26 @@ from ppe_detector.api.app import create_app
 
 
 def main():
+    port = int(os.getenv("PORT", "8090"))
     print("=" * 70)
-    print("🛡️  Starting Industrial PPE Compliance AI Operations Hub...")
+    print("Starting Industrial PPE Compliance AI Operations Hub...")
     print("=" * 70)
-    print("⚡ Real-Time YOLO Video Pipeline Initialized")
-    print("🌐 Web Dashboard: http://localhost:8000")
-    print("📹 MJPEG Video Feed: http://localhost:8000/video_feed")
-    print("📊 API Documentation: http://localhost:8000/docs")
+    print("Real-Time YOLO Video Pipeline Initialized")
+    print(f"Web Dashboard: http://localhost:{port}")
+    print(f"MJPEG Video Feed: http://localhost:{port}/video_feed")
+    print(f"API Documentation: http://localhost:{port}/docs")
     print("=" * 70)
 
     # Automatically open browser after 1.5 seconds
     def open_browser():
         time.sleep(1.5)
-        webbrowser.open("http://localhost:8000")
+        webbrowser.open(f"http://localhost:{port}")
 
     import threading
     threading.Thread(target=open_browser, daemon=True).start()
 
     app = create_app()
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
 
 
 if __name__ == "__main__":
