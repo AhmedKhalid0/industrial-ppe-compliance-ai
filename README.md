@@ -1,6 +1,8 @@
 # 🛡️ Industrial PPE Compliance AI
 ### Real-Time Computer Vision & Industrial Safety Monitoring System
 
+<div align="center">
+
 [![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
@@ -9,8 +11,12 @@
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.8%2B-5C3EE8.svg)](https://opencv.org/)
 [![Precision](https://img.shields.io/badge/mAP@0.5-98.4%25-brightgreen.svg)]()
 
-> **Automated, edge-capable Personal Protective Equipment (PPE) compliance detection for manufacturing plants, refineries, and construction sites.**  
-> Detects hard hats, safety vests, goggles, and personnel in real-time video streams, eliminates false positives via spatial association heuristics, captures instant visual violation evidence, and powers an interactive HSE operations dashboard.
+**Automated, edge-capable Personal Protective Equipment (PPE) compliance detection for manufacturing plants, refineries, and construction sites.**  
+Detects hard hats, safety vests, goggles, and personnel in real-time video streams, eliminates false positives via spatial containment heuristics, captures instant visual violation evidence, and powers an interactive HSE operations dashboard.
+
+[Key Metrics](#-key-highlights--metrics) • [Architecture](#-architecture--data-pipeline) • [Quick Start](#-quick-start-guide) • [REST API](#-rest-api-endpoints) • [Author](#-license--author)
+
+</div>
 
 ---
 
@@ -29,7 +35,7 @@
 ## 🌟 Core Features
 
 * **🤖 Deep Learning Vision Engine**: Multi-class YOLOv8/YOLOv11 object detector identifying `person`, `helmet`, `no-helmet`, `vest`, `no-vest`, `goggles`, and `boots`.
-* **📐 Spatial Association & Containment**: Intelligently evaluates whether protective gear is correctly worn on the corresponding body regions (Head region top 35%, Torso region middle 55%).
+* **📐 Spatial Association & Containment**: Intelligently evaluates whether protective gear is correctly worn on corresponding body regions (Head region top 35%, Torso region middle 55%).
 * **🎯 Multi-Object Tracking & Persistence Debouncing**: Tracks worker trajectories across frames using Centroid & IoU tracking, filtering out transient occlusions before logging violations.
 * **📸 Automated Evidence Capture**: Crops, annotates, and archives timestamped snapshot crops of safety breaches for compliance records.
 * **🌐 Interactive HSE Operations Dashboard**: Modern glassmorphism web UI with live MJPEG surveillance video, real-time WebSocket telemetry, hourly violation trends, and 1-click CSV audit exports.
@@ -117,8 +123,6 @@ ppe-detector \
 ```bash
 # Run unit test suite
 python -m unittest discover -s tests -v
-# Or with pytest & coverage
-pytest
 ```
 
 ---
@@ -129,8 +133,7 @@ pytest
 industrial-ppe-compliance-ai/
 ├── .github/workflows/ci.yml        # CI/CD test automation
 ├── docs/
-│   ├── ARCHITECTURE.md             # Deep-dive system architecture
-│   └── CASE_STUDY.md               # CV & Portfolio Case Study
+│   └── ARCHITECTURE.md             # Deep-dive system architecture
 ├── src/ppe_detector/
 │   ├── core/                       # YOLO detector, tracker, and compliance engine
 │   ├── database/                   # SQLite schema, models & repository
@@ -147,7 +150,8 @@ industrial-ppe-compliance-ai/
 
 ---
 
-## 📄 License & Author
+## 👤 License & Author
 
 Developed by **[Ahmed Khaled (Ahmed Algendy)](https://ahmedalgendy.com)**  
+Email: [contact@ahmedalgendy.com](mailto:contact@ahmedalgendy.com) • GitHub: [@AhmedKhalid0](https://github.com/AhmedKhalid0)  
 Licensed under the [MIT License](LICENSE).
