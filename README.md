@@ -18,6 +18,13 @@ Detects hard hats, safety vests, goggles, and personnel in real-time video strea
 
 </div>
 
+## 📸 Visual Showcase
+
+### Live HSE Surveillance Dashboard & REST API Documentation
+| Real-Time Safety Telemetry & Spatial Overlays | High-Throughput FastAPI REST & WebSockets Gateway |
+| :---: | :---: |
+| ![Compliance Dashboard](docs/assets/01_compliance_dashboard.png) | ![REST API Docs](docs/assets/03_rest_api.png) |
+
 ---
 
 ## ⚡ Key Highlights & Metrics

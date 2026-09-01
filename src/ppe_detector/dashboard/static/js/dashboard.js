@@ -125,7 +125,12 @@ function renderIncidents(incidents) {
         return;
     }
 
-    tbody.innerHTML = incidents.map(inc => `
+    tbody.innerHTML = incidents.map(inc => {
+        let snapUrl = "";
+        if (inc.snapshot_path) {
+            snapUrl = inc.snapshot_path.startsWith('/') ? inc.snapshot_path : (inc.snapshot_path.startsWith('snapshots/') ? '/' + inc.snapshot_path : '/snapshots/' + inc.snapshot_path);
+        }
+        return `
         <tr>
             <td><strong>#${inc.id}</strong></td>
             <td>${inc.timestamp}</td>
@@ -133,13 +138,13 @@ function renderIncidents(incidents) {
             <td>Worker #${inc.worker_track_id}</td>
             <td><span class="badge ${inc.status === 'UNRESOLVED' ? 'badge-danger' : 'badge-success'}">${inc.violation_type}</span></td>
             <td>
-                ${inc.snapshot_path ? `<img src="/${inc.snapshot_path}" class="snapshot-thumb" alt="Evidence" onclick="window.open('/${inc.snapshot_path}', '_blank')" />` : '<span style="color:#64748b">No Snap</span>'}
+                ${snapUrl ? `<img src="${snapUrl}" class="snapshot-thumb" alt="Evidence" onclick="window.open('${snapUrl}', '_blank')" />` : '<span style="color:#64748b">No Snap</span>'}
             </td>
             <td>
                 ${inc.status === 'UNRESOLVED' ? `<button class="btn-resolve" onclick="resolveIncident(${inc.id})">Resolve</button>` : '<span style="color:#10b981; font-weight:600">✓ Resolved</span>'}
             </td>
         </tr>
-    `).join("");
+    `}).join("");
 }
 
 async function resolveIncident(id) {
